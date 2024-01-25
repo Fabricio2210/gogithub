@@ -6,7 +6,7 @@ import(
 )
 
 func Service(serviceName string) {
-	cmd := exec.Command("sudo", "systemctl", "restart", serviceName)
+	cmd := exec.Command("sudo", "/bin/systemctl", "restart", serviceName)
 
 	output, err := cmd.CombinedOutput()
 	if err != nil {
