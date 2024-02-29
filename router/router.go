@@ -9,12 +9,6 @@ import (
 
 func DefaultRouter(app *fiber.App, subject string, repositoryURL string, destinationDir string, serviceType string) {
 	app.Post(subject, func(c *fiber.Ctx) error {
-		event := c.Get("X-GitHub-Event")
-
-		if event != "push" {
-			fmt.Println("Received event, but not the push event")
-			return c.SendStatus(fiber.StatusOK)
-		}
 		var payload map[string]interface{}
 		if err := c.BodyParser(&payload); err != nil {
 			fmt.Println("Error parsing JSON payload:", err)
